@@ -22,119 +22,100 @@ Display password as alert or written to page
 */
 
 // variables for password and empty container meant to iterate over
-let passLen = 8;
-let lower = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-let upper = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-let special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"];
+// let passLen = 8;
+// let lower = [
+//   "a",
+//   "b",
+//   "c",
+//   "d",
+//   "e",
+//   "f",
+//   "g",
+//   "h",
+//   "i",
+//   "j",
+//   "k",
+//   "l",
+//   "m",
+//   "n",
+//   "o",
+//   "p",
+//   "q",
+//   "r",
+//   "s",
+//   "t",
+//   "u",
+//   "v",
+//   "w",
+//   "x",
+//   "y",
+//   "z",
+// ];
+// let upper = [
+//   "A",
+//   "B",
+//   "C",
+//   "D",
+//   "E",
+//   "F",
+//   "G",
+//   "H",
+//   "I",
+//   "J",
+//   "K",
+//   "L",
+//   "M",
+//   "N",
+//   "O",
+//   "P",
+//   "Q",
+//   "R",
+//   "S",
+//   "T",
+//   "U",
+//   "V",
+//   "W",
+//   "X",
+//   "Y",
+//   "Z",
+// ];
+// let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-let passArray = [];
+// let special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"];
+
+// let passArray = [];
 
 // generatePassword function
 function generatePassword() {
-  console.log("Generating password");
+  let userInput = prompt("How long with the password be?");
+
+  let passLen = parseInt(userInput);
+
+  // console.log("Generating password");
+
+  if (isNaN(passLen)) {
+    alert(
+      "Error: Password must be at least 128 characters long with a minimum length of 8 characters. Please try again."
+    );
+  } else {
+    alert("Thank you!");
+  }
 
   for (let i = 0; i < password.length; i++) {}
   // password made when user submits prompts
 }
-
-function userPrompt() {
-  passLen = [];
-
-  passLen = parseInt(prompt("Select length of password? (8 - 128 characters)"));
-
-  if (isNaN(passLen) || passLen < 8 || passLen > 128) {
-    alert(
-      "Error: Password must be at least 128 characters long with a minimum length of 8 characters. Please try again."
-    );
-    return false;
-  }
-  if (confirm("Lowercase letters for passwords?")) {
-    passArray = passArray.concat(lower);
-  }
-  if (confirm("Uppercase letters for passwords?")) {
-    passArray = passArray.concat(upper);
-  }
-  if (confirm("Special characters for passwords?")) {
-    passArray = passArray.concat(special);
-  }
-  if (confirm("And numbers for passwords?")) {
-    passArray = passArray.concat(numbers);
-  }
-  return true;
-}
-// console.log(passLen);
-// console.log(passArray);
-// console.log(userPrompt);
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  let userAnswer = userPrompt(); //Reutnrs TRUE or FALSE from userPrompts function when answered
+  let password = generatePassword();
 
-  if (userAnswer) {
-    let password = generatePassword();
-    let passwordText = document.querySelector("#password");
+  let passwordText = document.querySelector("#password");
 
-    passwordText.value = password;
-  }
+  passwordText.value = password;
 }
 
 // Add event listener to generate button
