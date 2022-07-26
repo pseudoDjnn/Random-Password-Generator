@@ -95,11 +95,15 @@ function generatePassword() {
   // console.log("Generating password");
 
   if (isNaN(passLen)) {
+    alert("Error: Please try again.");
+    return;
+  }
+
+  if (passLen < 8 || passLen > 128) {
     alert(
-      "Error: Password must be at least 128 characters long with a minimum length of 8 characters. Please try again."
+      "Password must be at least 128 characters long with a minimum length of 8 characters."
     );
-  } else {
-    alert("Thank you!");
+    return;
   }
 
   for (let i = 0; i < password.length; i++) {}
