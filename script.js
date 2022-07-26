@@ -1,3 +1,36 @@
+let lower = [];
+let upper = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
+];
+let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+let special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"];
+
+let collector = [];
 // Assignment code here
 
 /* 
@@ -24,65 +57,6 @@ Display password as alert or written to page
 // variables for password and empty container meant to iterate over
 
 // let passLen = 8;
-// let lower = [
-//   "a",
-//   "b",
-//   "c",
-//   "d",
-//   "e",
-//   "f",
-//   "g",
-//   "h",
-//   "i",
-//   "j",
-//   "k",
-//   "l",
-//   "m",
-//   "n",
-//   "o",
-//   "p",
-//   "q",
-//   "r",
-//   "s",
-//   "t",
-//   "u",
-//   "v",
-//   "w",
-//   "x",
-//   "y",
-//   "z",
-// ];
-// let upper = [
-//   "A",
-//   "B",
-//   "C",
-//   "D",
-//   "E",
-//   "F",
-//   "G",
-//   "H",
-//   "I",
-//   "J",
-//   "K",
-//   "L",
-//   "M",
-//   "N",
-//   "O",
-//   "P",
-//   "Q",
-//   "R",
-//   "S",
-//   "T",
-//   "U",
-//   "V",
-//   "W",
-//   "X",
-//   "Y",
-//   "Z",
-// ];
-// let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-
-// let special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"];
 
 // let passArray = [];
 
@@ -93,6 +67,10 @@ function generatePassword() {
   let passLen = parseInt(userInput);
 
   // console.log("Generating password");
+  let uInputSymb = confirm("Shall we use symbols for your password?");
+  let uInputNumb = confirm("Shall we use numbers for your password?");
+  let uInputLow = confirm("Shall we use lower case letters for your password?");
+  let uInputUpp = confirm("Shall we use upper case letters for your password?");
 
   if (isNaN(passLen)) {
     alert("Error: Please try again.");
@@ -106,14 +84,23 @@ function generatePassword() {
     return;
   }
 
-  let uInputSymb = confirm("Shall we use symbols for your password?");
-  let uInputLow = confirm("Shall we use lower case letters for your password?");
-  let uInputUpp = confirm("Shall we use upper case letters for your password?");
-  let uInputNumb = confirm("Shall we use numbers for your password?");
+  for (let i = 0; i < upper.length; i++) {
+    lower[i] = upper[i].toLowerCase();
+  }
+  if (uInputSymb === true) {
+    collector.push(special);
+  }
+  if (uInputNumb === true) {
+    collector.push(numbers);
+  }
+  if (uInputLow === true) {
+    collector.push(lower);
+  }
+  if (uInputUpp === true) {
+    collector.push(upper);
+  }
 
-  // console.log(uInputNumb);
-
-  // for (let i = 0; i < password.length; i++) {}
+  console.log(collector);
   // password made when user submits prompts
 }
 
