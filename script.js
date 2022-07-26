@@ -88,25 +88,53 @@ let passArray = [];
 // generatePassword function
 function generatePassword() {
   console.log("Generating password");
+
+  for (let i = 0; i < password.length; i++) {}
   // password made when user submits prompts
 }
 
 function userPrompt() {
+  passLen = [];
+
   passLen = parseInt(prompt("Select length of password? (8 - 128 characters)"));
+
+  if (isNaN(passLen) || passLen < 8 || passLen > 128) {
+    alert(
+      "Error: Password must be at least 128 characters long with a minimum length of 8 characters. Please try again."
+    );
+    return false;
+  }
+  if (confirm("Lowercase letters for passwords?")) {
+    passArray = passArray.concat(lower);
+  }
+  if (confirm("Uppercase letters for passwords?")) {
+    passArray = passArray.concat(upper);
+  }
+  if (confirm("Special characters for passwords?")) {
+    passArray = passArray.concat(special);
+  }
+  if (confirm("And numbers for passwords?")) {
+    passArray = passArray.concat(numbers);
+  }
+  return true;
 }
-console.log(passLen);
-console.log(passArray);
-console.log(userPrompt);
+// console.log(passLen);
+// console.log(passArray);
+// console.log(userPrompt);
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  let password = generatePassword();
-  let passwordText = document.querySelector("#password");
+  let userAnswer = userPrompt(); //Reutnrs TRUE or FALSE from userPrompts function when answered
 
-  passwordText.value = password;
+  if (userAnswer) {
+    let password = generatePassword();
+    let passwordText = document.querySelector("#password");
+
+    passwordText.value = password;
+  }
 }
 
 // Add event listener to generate button
