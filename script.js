@@ -88,7 +88,15 @@ let passArray = [];
 // generatePassword function
 function generatePassword() {
   console.log("Generating password");
+  // password made when user submits prompts
 }
+
+function userPrompt() {
+  passLen = parseInt(prompt("Select length of password? (8 - 128 characters)"));
+}
+console.log(passLen);
+console.log(passArray);
+console.log(userPrompt);
 
 // Get references to the #generate element
 let generateBtn = document.querySelector("#generate");
