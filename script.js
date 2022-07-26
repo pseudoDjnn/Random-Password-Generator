@@ -106,7 +106,14 @@ function generatePassword() {
     return;
   }
 
-  for (let i = 0; i < password.length; i++) {}
+  let uInputSymb = confirm("Shall we use symbols for your password?");
+  let uInputLow = confirm("Shall we use lower case letters for your password?");
+  let uInputUpp = confirm("Shall we use upper case letters for your password?");
+  let uInputNumb = confirm("Shall we use numbers for your password?");
+
+  // console.log(uInputNumb);
+
+  // for (let i = 0; i < password.length; i++) {}
   // password made when user submits prompts
 }
 
