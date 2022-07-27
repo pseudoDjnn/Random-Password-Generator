@@ -115,15 +115,17 @@ function generatePassword() {
     collector.push(upper);
   }
 
-  console.log(collector);
+  // console.log(collector);
 
   let passGen = "";
 
   for (let i = 0; i < passwordLength; i++) {
     let randomValue = getRandomItem(collector);
     let randomChar = getRandomItem(randomValue);
-    console.log(randomChar);
+    passGen += randomChar;
+    // console.log(randomChar);
   }
+  console.log(passGen);
   // password made when user submits prompts
 }
 
