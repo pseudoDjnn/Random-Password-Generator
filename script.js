@@ -1,5 +1,28 @@
-let lower = [];
-let upper = [
+// Assignment coe here
+
+/* 
+WRITE generatePassword function
+
+return value in function
+
+  a.  Add for loop to iterate generatePassword function
+  b.  radomize iteration
+
+Prompt user to enter password criteria
+
+  a.  Password length 8 - 128
+  b.  Case senstive, numbers, special characters
+  c.  Add window alerts, prompt, and confirm
+
+Validate input made by user to confirm password
+
+Generate password using selected criteria
+
+Display password as alert or written to page
+*/
+
+const lower = [];
+const upper = [
   "A",
   "B",
   "C",
@@ -27,31 +50,22 @@ let upper = [
   "Y",
   "Z",
 ];
-let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-let special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"];
-
-// Assignment coe here
-
-/* 
-WRITE generatePassword function
-
-return value in function
-
-  a.  Add for loop to iterate generatePassword function
-  b.  radomize iteration
-
-Prompt user to enter password criteria
-
-  a.  Password length 8 - 128
-  b.  Case senstive, numbers, special characters
-  c.  Add window alerts, prompt, and confirm
-
-Validate input made by user to confirm password
-
-Generate password using selected criteria
-
-Display password as alert or written to page
-*/
+const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+const special = [
+  "~",
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "_",
+  "|",
+];
 
 // Randomize generated password based on user input and iteration
 function randomizer(min, max) {
@@ -61,7 +75,7 @@ function randomizer(min, max) {
     max = min;
     min = 0;
   }
-  let mRand = Math.random();
+  const mRand = Math.random();
   return Math.floor(min * (1 - mRand) + mRand * max);
 
   // return value;
@@ -75,29 +89,35 @@ function getRandomItem(list) {
 
 // generatePassword function
 function generatePassword() {
-  let userInput = prompt("How long with the password be?");
+  console.log("Generating password");
 
-  let passwordLength = parseInt(userInput);
+  while (true) {
+    var userInput = prompt("How long with the password be?");
 
-  // console.log("Generating password");
+    if (userInput === null) {
+      return;
+    }
+
+    var passwordLength = parseInt(userInput);
+
+    if (isNaN(passwordLength)) {
+      alert("Error: Please try again.");
+    } else if (passwordLength < 8 || passwordLength > 128) {
+      alert(
+        "Password must be at least 128  characters long with a minimum length of 8 characters."
+      );
+    } else {
+      break;
+    }
+  }
+
+  // prompts for questioning the characters in the password
   let uInputSymb = confirm("Shall we use symbols for your password?");
   let uInputNumb = confirm("Shall we use numbers for your password?");
   let uInputLow = confirm("Shall we use lower case letters for your password?");
   let uInputUpp = confirm("Shall we use upper case letters for your password?");
 
-  if (isNaN(passwordLength)) {
-    alert("Error: Please try again.");
-    return;
-  }
-
-  if (passwordLength < 8 || passwordLength > 128) {
-    alert(
-      "Password must be at least 128 characters long with a minimum length of 8 characters."
-    );
-    return;
-  }
-
-  let collector = [];
+  const collector = [];
 
   for (let i = 0; i < upper.length; i++) {
     lower[i] = upper[i].toLowerCase();
@@ -121,7 +141,7 @@ function generatePassword() {
     collector.push(uInputLow);
   }
 
-  let passGen = "";
+  var passGen = "";
 
   for (let i = 0; i < passwordLength; i++) {
     let randomValue = getRandomItem(collector);
@@ -130,18 +150,24 @@ function generatePassword() {
     // console.log(randomChar);
   }
   // console.log(passGen);
+
   // password made when user submits prompts
   return passGen;
 }
 
 // Get references to the #generate element
-let generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  let password = generatePassword();
+  var password = generatePassword();
 
-  let passwordText = document.querySelector("#password");
+  var passwordText = document.querySelector("#password");
+
+  // Returns web browser text when page is loaded by calling not true
+  if (!password) {
+    return;
+  }
 
   passwordText.value = password;
 }
