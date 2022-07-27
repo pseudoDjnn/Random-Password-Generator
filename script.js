@@ -21,51 +21,39 @@ Generate password using selected criteria
 Display password as alert or written to page
 */
 
-const lower = [];
-const upper = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-const special = [
-  "~",
-  "!",
-  "@",
-  "#",
-  "$",
-  "%",
-  "^",
-  "&",
-  "*",
-  "(",
-  ")",
-  "_",
-  "|",
-];
+const stringItems = {
+  lower: [],
+  upper: [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ],
+  numbers: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+  special: ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"],
+};
 
 // Randomize generated password based on user input and iteration
 function randomizer(min, max) {
@@ -119,20 +107,20 @@ function generatePassword() {
 
   const collector = [];
 
-  for (let i = 0; i < upper.length; i++) {
-    lower[i] = upper[i].toLowerCase();
+  for (let i = 0; i < stringItems.upper.length; i++) {
+    stringItems.lower[i] = stringItems.upper[i].toLowerCase();
   }
   if (uInputSymb === true) {
-    collector.push(special);
+    collector.push(stringItems.special);
   }
   if (uInputNumb === true) {
-    collector.push(numbers);
+    collector.push(stringItems.numbers);
   }
   if (uInputLow === true) {
-    collector.push(lower);
+    collector.push(stringItems.lower);
   }
   if (uInputUpp === true) {
-    collector.push(upper);
+    collector.push(stringItems.upper);
   }
 
   // console.log(collector);
