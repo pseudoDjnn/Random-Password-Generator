@@ -30,7 +30,7 @@ let upper = [
 let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 let special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"];
 
-// Assignment code here
+// Assignment coe here
 
 /* 
 WRITE generatePassword function
@@ -117,6 +117,10 @@ function generatePassword() {
 
   // console.log(collector);
 
+  if (collector.length === 0) {
+    collector.push(uInputLow);
+  }
+
   let passGen = "";
 
   for (let i = 0; i < passwordLength; i++) {
@@ -125,8 +129,9 @@ function generatePassword() {
     passGen += randomChar;
     // console.log(randomChar);
   }
-  console.log(passGen);
+  // console.log(passGen);
   // password made when user submits prompts
+  return passGen;
 }
 
 // Get references to the #generate element
