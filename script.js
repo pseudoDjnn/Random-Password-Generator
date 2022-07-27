@@ -30,7 +30,6 @@ let upper = [
 let numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 let special = ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "|"];
 
-let collector = [];
 // Assignment code here
 
 /* 
@@ -54,17 +53,31 @@ Generate password using selected criteria
 Display password as alert or written to page
 */
 
-// variables for password and empty container meant to iterate over
+// Randomize generated password based on user input and iteration
+function randomizer(min, max) {
+  // for (let i = min - 1; i < max; i--) {
+  // let value = Math.floor(Math.random() * (max - min) + min);
+  if (!max) {
+    max = min;
+    min = 0;
+  }
+  let mRand = Math.random();
+  return Math.floor(min * (1 - mRand) + mRand * max);
 
-// let passLen = 8;
+  // return value;
+  // }
+}
 
-// let passArray = [];
+// Getting a random item/value from our array
+function getRandomItem(list) {
+  return list[randomizer(list.length)];
+}
 
 // generatePassword function
 function generatePassword() {
   let userInput = prompt("How long with the password be?");
 
-  let passLen = parseInt(userInput);
+  let passwordLength = parseInt(userInput);
 
   // console.log("Generating password");
   let uInputSymb = confirm("Shall we use symbols for your password?");
@@ -72,17 +85,19 @@ function generatePassword() {
   let uInputLow = confirm("Shall we use lower case letters for your password?");
   let uInputUpp = confirm("Shall we use upper case letters for your password?");
 
-  if (isNaN(passLen)) {
+  if (isNaN(passwordLength)) {
     alert("Error: Please try again.");
     return;
   }
 
-  if (passLen < 8 || passLen > 128) {
+  if (passwordLength < 8 || passwordLength > 128) {
     alert(
       "Password must be at least 128 characters long with a minimum length of 8 characters."
     );
     return;
   }
+
+  let collector = [];
 
   for (let i = 0; i < upper.length; i++) {
     lower[i] = upper[i].toLowerCase();
@@ -101,6 +116,14 @@ function generatePassword() {
   }
 
   console.log(collector);
+
+  let passGen = "";
+
+  for (let i = 0; i < passwordLength; i++) {
+    let randomValue = getRandomItem(collector);
+    let randomChar = getRandomItem(randomValue);
+    console.log(randomChar);
+  }
   // password made when user submits prompts
 }
 
