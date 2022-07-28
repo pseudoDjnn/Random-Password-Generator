@@ -77,7 +77,7 @@ function getRandomItem(list) {
 
 // generatePassword function
 function generatePassword() {
-  console.log("Generating password");
+  // console.log("Generating password");
 
   while (true) {
     var userInput = prompt("How long with the password be?");
@@ -100,26 +100,28 @@ function generatePassword() {
   }
 
   // prompts for questioning the characters in the password
-  let uInputSymb = confirm("Shall we use symbols for your password?");
-  let uInputNumb = confirm("Shall we use numbers for your password?");
-  let uInputLow = confirm("Shall we use lower case letters for your password?");
-  let uInputUpp = confirm("Shall we use upper case letters for your password?");
+  const confirmation = {
+    uInputSymb: confirm("Shall we use symbols for your password?"),
+    uInputNumb: confirm("Shall we use numbers for your password?"),
+    uInputLow: confirm("Shall we use lower case letters for your password?"),
+    uInputUpp: confirm("Shall we use upper case letters for your password?"),
+  };
 
   const collector = [];
 
   for (let i = 0; i < stringItems.upper.length; i++) {
     stringItems.lower[i] = stringItems.upper[i].toLowerCase();
   }
-  if (uInputSymb === true) {
+  if (confirmation.uInputSymb === true) {
     collector.push(stringItems.special);
   }
-  if (uInputNumb === true) {
+  if (confirmation.uInputNumb === true) {
     collector.push(stringItems.numbers);
   }
-  if (uInputLow === true) {
+  if (confirmation.uInputLow === true) {
     collector.push(stringItems.lower);
   }
-  if (uInputUpp === true) {
+  if (confirmation.uInputUpp === true) {
     collector.push(stringItems.upper);
   }
 
@@ -129,7 +131,7 @@ function generatePassword() {
     collector.push(uInputLow);
   }
 
-  var passGen = "";
+  let passGen = "";
 
   for (let i = 0; i < passwordLength; i++) {
     let randomValue = getRandomItem(collector);
@@ -144,13 +146,13 @@ function generatePassword() {
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector("#generate");
+let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  let password = generatePassword();
 
-  var passwordText = document.querySelector("#password");
+  let passwordText = document.querySelector("#password");
 
   // Returns web browser text when page is loaded by calling not true
   if (!password) {
