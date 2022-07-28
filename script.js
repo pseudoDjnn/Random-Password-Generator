@@ -69,11 +69,13 @@ function randomizer(min, max) {
   // return value;
   // }
 }
+const list = [];
 
 // Getting a random item/value from our array
 function getRandomItem(list) {
   return list[randomizer(list.length)];
 }
+// getRandomItem(0);
 
 // generatePassword function
 function generatePassword() {
@@ -100,28 +102,38 @@ function generatePassword() {
   }
 
   // prompts for questioning the characters in the password
-  const confirmation = {
+  const confirming = {
     uInputSymb: confirm("Shall we use symbols for your password?"),
     uInputNumb: confirm("Shall we use numbers for your password?"),
     uInputLow: confirm("Shall we use lower case letters for your password?"),
     uInputUpp: confirm("Shall we use upper case letters for your password?"),
   };
 
+  // function getConfirm(confirmation) {
+  //   const confirming = {
+  //     uInputSymb: confirm("Shall we use symbols for your password?"),
+  //     uInputNumb: confirm("Shall we use numbers for your password?"),
+  //     uInputLow: confirm("Shall we use lower case letters for your password?"),
+  //     uInputUpp: confirm("Shall we use upper case letters for your password?"),
+  //   };
+  //   return confirming[confirmation.toLowerCase()] ?? "Error; Please try again";
+  // }
+
   const collector = [];
 
   for (let i = 0; i < stringItems.upper.length; i++) {
     stringItems.lower[i] = stringItems.upper[i].toLowerCase();
   }
-  if (confirmation.uInputSymb === true) {
+  if (confirming.uInputSymb === true) {
     collector.push(stringItems.special);
   }
-  if (confirmation.uInputNumb === true) {
+  if (confirming.uInputNumb === true) {
     collector.push(stringItems.numbers);
   }
-  if (confirmation.uInputLow === true) {
+  if (confirming.uInputLow === true) {
     collector.push(stringItems.lower);
   }
-  if (confirmation.uInputUpp === true) {
+  if (confirming.uInputUpp === true) {
     collector.push(stringItems.upper);
   }
 
@@ -137,7 +149,7 @@ function generatePassword() {
     let randomValue = getRandomItem(collector);
     let randomChar = getRandomItem(randomValue);
     passGen += randomChar;
-    // console.log(randomChar);
+    console.log(randomChar);
   }
   // console.log(passGen);
 
