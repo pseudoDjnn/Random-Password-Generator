@@ -72,10 +72,16 @@ function randomizer(min, max) {
 const list = [];
 
 // Getting a random item/value from our array
+// function getRandomItem(list) {
+//   // debugger;
+//   return list[randomizer(list.length)];
+// }
+// getRandomItem(0);
+
 function getRandomItem(list) {
+  // debugger;
   return list[randomizer(list.length)];
 }
-// getRandomItem(0);
 
 // generatePassword function
 function generatePassword() {
@@ -109,8 +115,8 @@ function generatePassword() {
     uInputUpp: confirm("Shall we use upper case letters for your password?"),
   };
 
-  // function getConfirm(confirmation) {
-  //   const confirming = {
+  // function confirming(confirmation) {
+  //   const getConfirm = {
   //     uInputSymb: confirm("Shall we use symbols for your password?"),
   //     uInputNumb: confirm("Shall we use numbers for your password?"),
   //     uInputLow: confirm("Shall we use lower case letters for your password?"),
@@ -141,6 +147,7 @@ function generatePassword() {
 
   if (collector.length === 0) {
     collector.push(uInputLow);
+    // collector.push(confirming.uInputLow);
   }
 
   let passGen = "";
